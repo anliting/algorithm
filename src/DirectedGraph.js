@@ -1,14 +1,40 @@
-function DirectedGraph(){
-    this.vertices=[]
-    this.edges=[]
-}
-DirectedGraph.prototype.addVertex=function(){
-    let v=Symbol()
-    this.vertices.push(v)
-    return v
-}
-DirectedGraph.prototype.addEdge=function(v,w){
-    let e={v,w}
-    this.edges.push(e)
-}
-DirectedGraph
+(async()=>{
+    let VertexEdgeArray=await module.shareImport('VertexEdgeArray.js')
+    function DirectedGraph(DataStructure=VertexEdgeArray){
+        this._DataStructure=VertexEdgeArray
+        this._data=new this._DataStructure
+    }
+    Object.defineProperty(DirectedGraph.prototype,'vertices',{get(){
+        return this._data.vertices.slice()
+    }})
+    Object.defineProperty(DirectedGraph.prototype,'edges',{get(){
+        return this._data.edges.slice()
+    }})
+    DirectedGraph.prototype.addVertex=function(v){
+        return this._data.addVertex(v)
+    }
+    DirectedGraph.prototype.addEdge=function(v,w){
+        this._data.addEdge(v,w)
+    }
+    Object.defineProperty(DirectedGraph.prototype,'topologicalSort',{get(){
+        let id={},arc={}
+        this._data.vertices.map(v=>{
+            id[v]=0
+            arc[v]=[]
+        })
+        this._data.edges.map(([v,w])=>{
+            id[w]++
+            arc[v].push(w)
+        })
+        let
+            a=this._data.vertices.filter(v=>id[v]==0),
+            res=[]
+        while(a.length){
+            let v=a.pop()
+            res.push(v)
+            arc[v].map(w=>--id[w]||a.push(w))
+        }
+        return res
+    }})
+    return DirectedGraph
+})()
