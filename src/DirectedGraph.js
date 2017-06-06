@@ -2,7 +2,7 @@
     let[
         VertexEdgeArray,
     ]=await Promise.all([
-        module.shareImport('VertexEdgeArray.js'),
+        module.shareImport('DirectedGraph/VertexEdgeArray.js'),
     ])
     function DirectedGraph(DataStructure=VertexEdgeArray){
         this._DataStructure=VertexEdgeArray
