@@ -1,5 +1,9 @@
-(async()=>{
-    let VertexEdgeArray=await module.shareImport('VertexEdgeArray.js')
+;(async()=>{
+    let[
+        VertexEdgeArray,
+    ]=await Promise.all([
+        module.shareImport('VertexEdgeArray.js'),
+    ])
     function DirectedGraph(DataStructure=VertexEdgeArray){
         this._DataStructure=VertexEdgeArray
         this._data=new this._DataStructure
@@ -16,7 +20,7 @@
     DirectedGraph.prototype.addEdge=function(v,w){
         this._data.addEdge(v,w)
     }
-    Object.defineProperty(DirectedGraph.prototype,'topologicalSort',{get(){
+    DirectedGraph.prototype.longestTopologicalSort=function(){
         let id={},arc={}
         this._data.vertices.map(v=>{
             id[v]=0
@@ -35,6 +39,12 @@
             arc[v].map(w=>--id[w]||a.push(w))
         }
         return res
+    }
+    Object.defineProperty(DirectedGraph.prototype,'topologicalSort',{get(){
+        let a=this.longestTopologicalSort()
+        if(a.length<this._data.vertices.length)
+            throw Error('Cycle detected.')
+        return a
     }})
     return DirectedGraph
 })()
