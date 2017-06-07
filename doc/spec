@@ -1,5 +1,5 @@
-Array-like:
+Array style ADT:
     .length
-    .push
     .pop
+    .push
     [Symbol.iterator]

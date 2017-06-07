@@ -1,8 +1,10 @@
 ;(async()=>{
     let[
         VertexEdgeArray,
+        PriorityQueue,
     ]=await Promise.all([
         module.shareImport('DirectedGraph/VertexEdgeArray.js'),
+        module.repository.algorithm.PriorityQueue,
     ])
     function DirectedGraph(DataStructure=VertexEdgeArray){
         this._DataStructure=VertexEdgeArray
@@ -20,7 +22,7 @@
     DirectedGraph.prototype.addEdge=function(v,w){
         this._data.addEdge(v,w)
     }
-    DirectedGraph.prototype.longestTopologicalSort=function(){
+    DirectedGraph.prototype.longestTopologicalSort=function(cmp){
         let id={},arc={}
         this._data.vertices.map(v=>{
             id[v]=0
@@ -33,6 +35,11 @@
         let
             a=this._data.vertices.filter(v=>id[v]==0),
             res=[]
+        if(cmp){
+            let c=new PriorityQueue(cmp)
+            c.push(...a)
+            a=c
+        }
         while(a.length){
             let v=a.pop()
             res.push(v)
