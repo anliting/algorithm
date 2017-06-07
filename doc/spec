@@ -1,6 +1,0 @@
-ADT:
-    Container:
-        .in
-        .out
-        .size
-        [Symbol.iterator]

@@ -24,7 +24,7 @@
     DirectedGraph.prototype.addEdge=function(v,w){
         this._data.addEdge(v,w)
     }
-    DirectedGraph.prototype.longestTopologicalSort=function(cmp){
+    DirectedGraph.prototype.longestTopologicalSort=function(c=new Stack){
         let id={},arc={}
         this._data.vertices.map(v=>{
             id[v]=0
@@ -34,9 +34,7 @@
             id[w]++
             arc[v].push(w)
         })
-        let
-            res=[],
-            c=cmp?new PriorityQueue(cmp):new Stack
+        let res=[]
         c.in(...this._data.vertices.filter(v=>id[v]==0))
         while(c.size){
             let v=c.out()
