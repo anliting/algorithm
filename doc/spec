@@ -1,5 +1,6 @@
-Array style ADT:
-    .length
-    .pop
-    .push
-    [Symbol.iterator]
+ADT:
+    Container:
+        .in
+        .out
+        .size
+        [Symbol.iterator]

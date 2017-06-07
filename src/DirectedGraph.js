@@ -2,9 +2,11 @@
     let[
         VertexEdgeArray,
         PriorityQueue,
+        Queue,
     ]=await Promise.all([
         module.shareImport('DirectedGraph/VertexEdgeArray.js'),
         module.repository.algorithm.PriorityQueue,
+        module.repository.algorithm.Queue,
     ])
     function DirectedGraph(DataStructure=VertexEdgeArray){
         this._DataStructure=VertexEdgeArray
@@ -33,17 +35,13 @@
             arc[v].push(w)
         })
         let
-            a=this._data.vertices.filter(v=>id[v]==0),
-            res=[]
-        if(cmp){
-            let c=new PriorityQueue(cmp)
-            c.push(...a)
-            a=c
-        }
-        while(a.length){
-            let v=a.pop()
+            res=[],
+            c=cmp?new PriorityQueue(cmp):new Queue
+        c.in(...this._data.vertices.filter(v=>id[v]==0))
+        while(c.size){
+            let v=c.out()
             res.push(v)
-            arc[v].map(w=>--id[w]||a.push(w))
+            arc[v].map(w=>--id[w]||c.in(w))
         }
         return res
     }
