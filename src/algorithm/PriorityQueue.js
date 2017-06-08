@@ -10,14 +10,14 @@
         CompoundArrayContainer.prototype
     )
     PriorityQueue.prototype.in=function(){
-        ;[...arguments].map(e=>{
+        for(let i=0;i<arguments.length;i++){let e=arguments[i]
             this._a.push(e)
             for(let i=this._a.length-1,p;i;i=p){
-                p=Math.floor((i-1)/2)
+                p=~~((i-1)/2)
                 if(this._cmp(this._a[i],this._a[p])<0)
                     [this._a[i],this._a[p]]=[this._a[p],this._a[i]]
             }
-        })
+        }
     }
     PriorityQueue.prototype.out=function(){
         let e=this._a[0]
