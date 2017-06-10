@@ -48,5 +48,5 @@
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
-    testContainerIterator()
+    testDirectedGraph()
 })()

@@ -1,6 +1,9 @@
 ;(async()=>{
-    let CompoundArrayContainer=
-        await module.repository.algorithm.CompoundArrayContainer
+    let[
+        CompoundArrayContainer,
+    ]=await Promise.all([
+        module.repository.algorithm.CompoundArrayContainer,
+    ])
     function PriorityQueue(cmp){
         CompoundArrayContainer.call(this)
         this._cmp=cmp||((a,b)=>a-b)
