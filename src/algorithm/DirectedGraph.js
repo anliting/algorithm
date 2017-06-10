@@ -39,7 +39,8 @@
         let res=[]
         for(let v of this._data.vertices.filter(v=>id[v]==0))
             c.in(v)
-        for(let v of Container.iterator(c)){
+        while(c.size){
+            let v=c.out()
             res.push(v)
             arc[v].map(w=>--id[w]||c.in(w))
         }
