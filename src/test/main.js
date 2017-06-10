@@ -1,17 +1,22 @@
 ;(async()=>{
     let algorithm=await module.shareImport('../algorithm.js')
-    async function testDirectedGraph(){
+    function testContainerIterator(){
+        let c=new algorithm.Queue
+        c.in(3,5,9,4,8,2,1,6,7)
+        console.log(...algorithm.Container.iterator(c))
+    }
+    function testDirectedGraph(){
         let g=new algorithm.DirectedGraph
         for(let n=3;n--;)g.addVertex(n)
         ;[[2,0],[2,1],[1,0]].map(e=>g.addEdge(...e))
         console.log(...g.topologicalSort)
     }
-    async function testPriorityQueue(){
+    function testPriorityQueue(){
         let c=new algorithm.PriorityQueue
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
-    async function testPriorityQueuePerformanceIn(){
+    function testPriorityQueuePerformanceIn(){
         let n=1e6
         let c=new algorithm.PriorityQueue
         for(let i=0;i<n;i++)
@@ -22,7 +27,7 @@
         let t1=new Date
         console.log(t1-t0)
     }
-    async function testPriorityQueuePerformanceOut(){
+    function testPriorityQueuePerformanceOut(){
         let n=1e6
         let c=new algorithm.PriorityQueue
         for(let i=0;i<n;i++)
@@ -33,15 +38,15 @@
         let t1=new Date
         console.log(t1-t0)
     }
-    async function testStack(){
+    function testStack(){
         let c=new algorithm.Stack
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
-    async function testQueue(){
+    function testQueue(){
         let c=new algorithm.Queue
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
-    await testPriorityQueuePerformanceOut()
+    testContainerIterator()
 })()
