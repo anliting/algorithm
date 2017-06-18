@@ -1,1 +1,1 @@
-node $linker algorithm.js algorithm > algorithm.static.js
+node $linker template.js template > template.static.js

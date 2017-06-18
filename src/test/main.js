@@ -1,24 +1,24 @@
 ;(async()=>{
-    let algorithm=await module.shareImport('../algorithm.js')
+    let template=await module.shareImport('../template.js')
     function testContainerIterator(){
-        let c=new algorithm.Queue
+        let c=new template.Queue
         c.in(3,5,9,4,8,2,1,6,7)
-        console.log(...algorithm.Container.iterator(c))
+        console.log(...template.Container.iterator(c))
     }
     function testDirectedGraph(){
-        let g=new algorithm.DirectedGraph
+        let g=new template.DirectedGraph
         for(let n=3;n--;)g.addVertex(n)
         ;[[2,0],[2,1],[1,0]].map(e=>g.addEdge(...e))
         console.log(...g.topologicalSort)
     }
     function testPriorityQueue(){
-        let c=new algorithm.PriorityQueue
+        let c=new template.PriorityQueue
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
     function testPriorityQueuePerformanceIn(){
         let n=1e6
-        let c=new algorithm.PriorityQueue
+        let c=new template.PriorityQueue
         for(let i=0;i<n;i++)
             c.in(i)
         let t0=new Date
@@ -29,7 +29,7 @@
     }
     function testPriorityQueuePerformanceOut(){
         let n=1e6
-        let c=new algorithm.PriorityQueue
+        let c=new template.PriorityQueue
         for(let i=0;i<n;i++)
             c.in(i)
         let t0=new Date
@@ -39,12 +39,12 @@
         console.log(t1-t0)
     }
     function testStack(){
-        let c=new algorithm.Stack
+        let c=new template.Stack
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
     function testQueue(){
-        let c=new algorithm.Queue
+        let c=new template.Queue
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }

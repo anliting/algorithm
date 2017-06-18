@@ -1,5 +1,5 @@
 (async()=>{
-    let Container=await module.repository.algorithm.Container
+    let Container=await module.repository.template.Container
     function CompoundArrayContainer(){
         Container.call(this)
         this._a=[]

@@ -1,14 +1,12 @@
 ;(async()=>{
     let[
         VertexEdgeArray,
-        PriorityQueue,
         Stack,
         Container,
     ]=await Promise.all([
         module.shareImport('DirectedGraph/VertexEdgeArray.js'),
-        module.repository.algorithm.PriorityQueue,
-        module.repository.algorithm.Stack,
-        module.repository.algorithm.Container,
+        module.repository.template.Stack,
+        module.repository.template.Container,
     ])
     function DirectedGraph(DataStructure=VertexEdgeArray){
         this._DataStructure=VertexEdgeArray

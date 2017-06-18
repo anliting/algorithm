@@ -2,7 +2,7 @@
     let[
         CompoundArrayContainer,
     ]=await Promise.all([
-        module.repository.algorithm.CompoundArrayContainer,
+        module.repository.template.CompoundArrayContainer,
     ])
     function PriorityQueue(cmp){
         CompoundArrayContainer.call(this)

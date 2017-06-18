@@ -1,6 +1,6 @@
 ;(async()=>{
     let CompoundArrayContainer=
-        await module.repository.algorithm.CompoundArrayContainer
+        await module.repository.template.CompoundArrayContainer
     function Queue(){
         CompoundArrayContainer.call(this)
     }
