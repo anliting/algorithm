@@ -7,6 +7,7 @@
         PriorityQueue:          'template/PriorityQueue.js',
         Queue:                  'template/Queue.js',
         Stack:                  'template/Stack.js',
+        Vector2:                'template/Vector2.js',
     },module.shareImport.bind(module))
     let[
         Container,
