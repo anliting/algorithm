@@ -14,12 +14,14 @@
         PriorityQueue,
         Queue,
         Stack,
+        Vector2,
     ]=await Promise.all([
         module.repository.template.Container,
         module.repository.template.DirectedGraph,
         module.repository.template.PriorityQueue,
         module.repository.template.Queue,
         module.repository.template.Stack,
+        module.repository.template.Vector2,
     ])
     return{
         Container,
@@ -27,5 +29,6 @@
         PriorityQueue,
         Stack,
         Queue,
+        Vector2,
     }
 })()
