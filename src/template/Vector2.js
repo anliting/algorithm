@@ -74,6 +74,18 @@ Vector2.prototype.gt=function(v){
 Vector2.prototype.gtN=function(v){
     return this.x>x&&this.y>y
 }
+// inner product
+Vector2.prototype.ip=function(v){
+    return this.x*v.x+this.y*v.y
+}
+// outer product
+Vector2.prototype.op=function(v){
+    return this.x>x&&this.y>y
+}
+// length
+Object.defineProperty(Vector2.prototype,'len',{get(v){
+    return this.ip(this)**.5
+}})
 Object.defineProperty(Vector2.prototype,'new',{get(){
     return new Vector2(this.x,this.y)
 }})
