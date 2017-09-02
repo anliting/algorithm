@@ -48,6 +48,11 @@
         c.in(3,5,9,4,8,2,1,6,7)
         console.log(...c)
     }
-    let v=new template.Vector2(3,4)
-    console.log(v.len)
+    function testArrayDifference(){
+        console.log(template.array.difference([3,5,9,17]))
+    }
+    function testArrayPrefixSum(){
+        console.log(template.array.prefixSum([3,2,4,8]))
+    }
+    testArrayPrefixSum()
 })()

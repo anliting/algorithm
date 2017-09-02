@@ -8,6 +8,7 @@
         Queue:                  'template/Queue.js',
         Stack:                  'template/Stack.js',
         Vector2:                'template/Vector2.js',
+        array:                  'template/array.js',
     },module.shareImport.bind(module))
     let[
         Container,
@@ -16,6 +17,7 @@
         Queue,
         Stack,
         Vector2,
+        array,
     ]=await Promise.all([
         module.repository.template.Container,
         module.repository.template.DirectedGraph,
@@ -23,6 +25,7 @@
         module.repository.template.Queue,
         module.repository.template.Stack,
         module.repository.template.Vector2,
+        module.repository.template.array,
     ])
     return{
         Container,
@@ -31,5 +34,6 @@
         Stack,
         Queue,
         Vector2,
+        array,
     }
 })()
