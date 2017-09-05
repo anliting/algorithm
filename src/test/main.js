@@ -54,5 +54,15 @@
     function testArrayPrefixSum(){
         console.log(template.array.prefixSum([3,2,4,8]))
     }
-    testArrayPrefixSum()
+    function testRange(){
+        let
+            r=new template.Range(3,9),
+            s=new template.Range(-4,7)
+        console.log(r.intersect(s))
+    }
+    function testVector2(){
+        let v=new template.Vector2(3,4)
+        console.log(v.len)
+    }
+    testRange()
 })()
