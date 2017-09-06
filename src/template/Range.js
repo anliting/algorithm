@@ -9,6 +9,9 @@
     Object.defineProperty(Range.prototype,'len',{get(v){
         return Math.max(0,this.y-this.x)
     }})
+    Range.prototype.valueOf=function(){
+        return Math.max(0,this.y-this.x)
+    }
     Range.prototype.intersect=function(){
         arguments=[...arguments]
         this.x=Math.max(this.x,...arguments.map(r=>r.x))

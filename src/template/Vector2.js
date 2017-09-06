@@ -13,5 +13,8 @@
     Object.defineProperty(Vector2.prototype,'len',{get(v){
         return this.ip(this)**.5
     }})
+    Vector2.prototype.valueOf=function(){
+        return this.ip(this)**.5
+    }
     return Vector2
 })()

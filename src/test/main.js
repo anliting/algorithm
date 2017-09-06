@@ -62,7 +62,7 @@
     }
     function testVector2(){
         let v=new template.Vector2(3,4)
-        console.log(v.len)
+        console.log(+v)
     }
-    testRange()
+    testVector2()
 })()
