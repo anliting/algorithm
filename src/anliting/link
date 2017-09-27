@@ -1,1 +1,1 @@
-node $linker template.js template > template.static.js
+$rollup -i template.js -o template.static.js -f es

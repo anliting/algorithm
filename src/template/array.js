@@ -8,7 +8,7 @@ function difference(a){
         a[i]-=a[i-1]
     return a
 }
-;({
+export default{
     difference,
     prefixSum,
-})
+}

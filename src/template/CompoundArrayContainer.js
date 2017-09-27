@@ -1,21 +1,19 @@
-(async()=>{
-    let Container=await module.repository.template.Container
-    function CompoundArrayContainer(){
-        Container.call(this)
-        this._a=[]
-    }
-    Object.setPrototypeOf(
-        CompoundArrayContainer.prototype,
-        Container.prototype
-    )
-    CompoundArrayContainer.prototype.in=function(){
-        this._a.push(...arguments)
-    }
-    CompoundArrayContainer.prototype.out=function(){
-        return this._a.pop()
-    }
-    Object.defineProperty(CompoundArrayContainer.prototype,'size',{get(){
-        return this._a.length
-    }})
-    return CompoundArrayContainer
-})()
+import Container from './Container.js'
+function CompoundArrayContainer(){
+    Container.call(this)
+    this._a=[]
+}
+Object.setPrototypeOf(
+    CompoundArrayContainer.prototype,
+    Container.prototype
+)
+CompoundArrayContainer.prototype.in=function(){
+    this._a.push(...arguments)
+}
+CompoundArrayContainer.prototype.out=function(){
+    return this._a.pop()
+}
+Object.defineProperty(CompoundArrayContainer.prototype,'size',{get(){
+    return this._a.length
+}})
+export default CompoundArrayContainer

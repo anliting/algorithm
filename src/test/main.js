@@ -1,5 +1,5 @@
 ;(async()=>{
-    let template=await module.shareImport('../template.js')
+    let template=await module.moduleByPath('./template.static.js')
     function testContainerIterator(){
         let c=new template.Queue
         c.in(3,5,9,4,8,2,1,6,7)
@@ -64,5 +64,5 @@
         let v=new template.Vector2(3,4)
         console.log(+v)
     }
-    testVector2()
+    console.log(template)
 })()

@@ -5,4 +5,4 @@ Container.prototype[Symbol.iterator]=function*(){
         yield this.out()
 }
 Container.iterator=c=>Container.prototype[Symbol.iterator].call(c)
-Container
+export default Container

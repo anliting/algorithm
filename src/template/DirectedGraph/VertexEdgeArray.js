@@ -16,4 +16,4 @@ VertexEdgeArray.prototype.addEdge=function(v,w){
     let e=[v,w]
     this._edges.push(e)
 }
-VertexEdgeArray
+export default VertexEdgeArray
