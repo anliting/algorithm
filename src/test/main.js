@@ -1,3 +1,4 @@
+import modulePromise from './module.js'
 import template from '../optimize/template.js'
 function testContainerIterator(){
     let c=new template.Queue
@@ -37,29 +38,75 @@ function testPriorityQueuePerformanceOut(){
     let t1=new Date
     console.log(t1-t0)
 }
-function testStack(){
-    let c=new template.Stack
-    c.in(3,5,9,4,8,2,1,6,7)
-    console.log(...c)
-}
-function testQueue(){
-    let c=new template.Queue
-    c.in(3,5,9,4,8,2,1,6,7)
-    console.log(...c)
-}
-function testArrayDifference(){
-    console.log(template.array.difference([3,5,9,17]))
-}
-function testArrayPrefixSum(){
-    console.log(template.array.prefixSum([3,2,4,8]))
-}
-function testRange(){
+let tests=[
+    {
+        description:'Stack',
+        test(){
+            let
+                expected=[7,6,1,2,8,4,9,5,3],
+                c=new template.Stack
+            c.in(3,5,9,4,8,2,1,6,7)
+            let result=[...c]
+            return expected.length==result.length&&
+                expected.every((v,i)=>v==result[i])
+        },
+    },{
+        description:'Queue',
+        test(){
+            let
+                expected=[3,5,9,4,8,2,1,6,7],
+                c=new template.Queue
+            c.in(3,5,9,4,8,2,1,6,7)
+            let result=[...c]
+            return expected.length==result.length&&
+                expected.every((v,i)=>v==result[i])
+        },
+    },{
+        description:'Range',
+        test(){
+            let
+                r=new template.Range(3,9),
+                s=new template.Range(-4,7),
+                t=r.intersect(s)
+            return t.x==3&&t.y==7
+        },
+    },{
+        description:'Vector2',
+        test(){
+            let v=new template.Vector2(3,4)
+            return +v==5
+        },
+    },{
+        description:'array.difference',
+        test(){
+            let
+                a=[3,2,4,8],
+                b=template.array.difference([3,5,9,17])
+            return a.length==b.length&&a.every((v,i)=>v==b[i])
+        },
+    },{
+        description:'array.prefixSum',
+        test(){
+            let
+                a=[3,5,9,17],
+                b=template.array.prefixSum([3,2,4,8])
+            return a.length==b.length&&a.every((v,i)=>v==b[i])
+        },
+    },
+]
+;(async()=>{
     let
-        r=new template.Range(3,9),
-        s=new template.Range(-4,7)
-    console.log(r.intersect(s))
-}
-function testVector2(){
-    let v=new template.Vector2(3,4)
-    console.log(+v)
-}
+        module=await modulePromise,
+        repository=await module.importByPath('https://gitcdn.link/cdn/anliting/althea/c676869afdb008eb27337fac0de432a13ddbc2a7/src/AltheaServer/HttpServer/files/lib/repository.static.js',{mode:1}),
+        dom=await repository.althea.dom
+    dom.body(
+        dom.table(
+            tests.map(t=>
+                dom.tr(
+                    dom.td(t.test()?'passed':'failed'),
+                    dom.td(t.description),
+                )
+            )
+        )
+    )
+})()
