@@ -1,0 +1,14 @@
+{
+    "name":"template",
+    "version":"0.0.0",
+    "description":"template",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/anliting/template.git"
+    },
+    "license":"MIT",
+    "dependencies":{
+        "closure-compiler-cli": "*",
+        "rollup":               "*"
+    }
+}
