@@ -1,4 +1,4 @@
-import template from '../template.min.js'
+import template from '../optimize/template.js'
 function testContainerIterator(){
     let c=new template.Queue
     c.in(3,5,9,4,8,2,1,6,7)
@@ -63,4 +63,3 @@ function testVector2(){
     let v=new template.Vector2(3,4)
     console.log(+v)
 }
-console.log(template)
