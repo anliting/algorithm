@@ -1,1 +1,4 @@
-$rollup -i template.js -o template.static.js -f es
+rollupOut=$(mktemp)
+$rollup -i template.js -o $rollupOut -f es
+closure-compiler --language_out ECMASCRIPT_2017 $rollupOut > template.min.js
+rm $rollupOut
