@@ -1,4 +1,4 @@
 rollupOut=$(mktemp)
 $rollup -i template.js -o $rollupOut -f es
-$closureCompiler --language_out ECMASCRIPT_2017 $rollupOut > optimize/template.js
+$closureCompiler -W QUIET --language_out ECMASCRIPT_2015 $rollupOut > optimize/template.js
 rm $rollupOut

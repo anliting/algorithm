@@ -77,7 +77,7 @@ NumberPair.prototype.gt=function(v){
     return this.x>v.x&&this.y>v.y
 }
 NumberPair.prototype.gtN=function(v){
-    return this.x>x&&this.y>y
+    return this.x>v.x&&this.y>v.y
 }
 Object.defineProperty(NumberPair.prototype,'new',{get(){
     return new NumberPair(this.x,this.y)
@@ -99,7 +99,7 @@ NumberPair.prototype.newSubN=function(x,y=x){
     return new NumberPair(this.x-x,this.y-y)
 }
 NumberPair.prototype.newMul=function(v){
-    return new NumberPair(this.x*vx,this.y*v.y)
+    return new NumberPair(this.x*v.x,this.y*v.y)
 }
 NumberPair.prototype.newMulN=function(x,y=x){
     return new NumberPair(this.x*x,this.y*y)

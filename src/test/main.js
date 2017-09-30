@@ -15,6 +15,9 @@ import tests from './tests.js'
             tr+tr td{
                 border-top:1px solid lightgray;
             }
+            .timeUsed{
+                text-align:right;
+            }
         `)
     )
     let table
@@ -35,7 +38,7 @@ import tests from './tests.js'
             dom(table,dom.tr(
                 dom.td(t.description),
                 dom.td(res?'passed':'failed'),
-                dom.td((end-start).toFixed(3)),
+                dom.td({className:'timeUsed'},(end-start).toFixed(3)),
             ))
             await new Promise(setTimeout)
         }
