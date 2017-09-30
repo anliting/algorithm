@@ -1,4 +1,4 @@
-import template from '../optimize/template.js'
+import template from '../opt1/template.js'
 export default[
     {
         description:'Container.iterator',
