@@ -1,10 +1,10 @@
 {
-    "name":"template",
+    "name":"simple",
     "version":"0.0.0",
-    "description":"template",
+    "description":"simple",
     "repository":{
         "type":"git",
-        "url":"https://github.com/anliting/template.git"
+        "url":"https://github.com/anliting/simple.js.git"
     },
     "license":"MIT",
     "dependencies":{

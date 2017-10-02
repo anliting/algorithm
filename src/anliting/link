@@ -1,2 +1,2 @@
-$rollup -i template.js -o opt0/template.js -f es
-$closureCompiler -W QUIET --language_out ECMASCRIPT_2015 opt0/template.js > opt1/template.js
+$rollup -i simple.js -o opt0/simple.js -f es
+$closureCompiler -W QUIET --language_out ECMASCRIPT_2015 opt0/simple.js > opt1/simple.js

@@ -93,6 +93,26 @@ Object.defineProperty(DirectedGraph.prototype,'topologicalSort',{get(){
     return a
 }});
 
+function EventEmmiter(){
+    this.listeners={};
+}
+EventEmmiter.prototype.emit=function(key,event){
+    if(!(key in this.listeners))
+        return
+    for(let l of this.listeners[key])
+        l(event);
+};
+EventEmmiter.prototype.off=function(key,listener){
+    if(!(key in this.listeners))
+        return
+    this.listeners[key].delete(listener);
+};
+EventEmmiter.prototype.on=function(key,listener){
+    if(!(key in this.listeners))
+        this.listeners[key]=new Set;
+    this.listeners[key].add(listener);
+};
+
 /*
 我在這裡設計過多型，但是比沒多型的版本慢四倍；這樣的效率在現在（2017-06-06）的處境下這是沒辦法接受的，只好寫成 add-addN 這個模樣。
 These names (add, sub, mul, div) come from x86 instructions.
@@ -316,9 +336,10 @@ var array = {
     prefixSum,
 };
 
-var template = {
+var simple = {
     Container,
     DirectedGraph,
+    EventEmmiter,
     NumberPair,
     PriorityQueue,
     Range,
@@ -328,4 +349,4 @@ var template = {
     array,
 };
 
-export default template;
+export default simple;
