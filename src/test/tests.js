@@ -1,4 +1,4 @@
-import simple from '../opt1/simple.js'
+import simple from '../simple.js'
 export default[
     {
         description:'Container.iterator',
@@ -22,7 +22,7 @@ export default[
                 expected.every((v,i)=>v==result[i])
         },
     },{
-        description:'EventEmmiter',
+        description:'EventEmmiter on+off+emit',
         test(){
             let
                 e=new simple.EventEmmiter,
@@ -33,6 +33,20 @@ export default[
             if(!(v==1))
                 return
             e.off('a',l)
+            e.emit('a')
+            if(!(v==1))
+                return
+            return 1
+        },
+    },{
+        description:'EventEmmiter once+emit',
+        test(){
+            let
+                e=new simple.EventEmmiter,
+                v=0,
+                l=()=>v++
+            e.once('a',l)
+            e.emit('a')
             e.emit('a')
             if(!(v==1))
                 return

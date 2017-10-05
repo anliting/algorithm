@@ -33,11 +33,16 @@ import tests from './tests.js'
     ;(async()=>{
         for(let t of tests){
             let start=performance.now()
-            let res=t.test()
+            let res
+            try{
+                res=t.test()?'passed':'failed'
+            }catch(e){
+                res='error'
+            }
             let end=performance.now()
             dom(table,dom.tr(
                 dom.td(t.description),
-                dom.td(res?'passed':'failed'),
+                dom.td(res),
                 dom.td({className:'timeUsed'},(end-start).toFixed(3)),
             ))
             await new Promise(setTimeout)
