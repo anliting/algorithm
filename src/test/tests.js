@@ -1,4 +1,4 @@
-import simple from '../simple.js'
+import simple from '../simple.static.js'
 export default[
     {
         description:'Container.iterator',

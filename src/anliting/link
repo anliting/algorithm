@@ -1,2 +1,0 @@
-#$rollup -i simple.js -o opt0/simple.js -f es
-#$closureCompiler -W QUIET --language_out ECMASCRIPT_2015 opt0/simple.js > opt1/simple.js
