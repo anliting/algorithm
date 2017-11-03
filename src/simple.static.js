@@ -362,4 +362,5 @@ var simple = {
     array,
 };
 
+export { Container, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array };
 export default simple;

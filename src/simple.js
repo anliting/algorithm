@@ -9,6 +9,18 @@ import Range from './simple/Range.js'
 import Stack from './simple/Stack.js'
 import Vector2 from './simple/Vector2.js'
 import array from './simple/array.js'
+export{
+    Container,
+    DirectedGraph,
+    EventEmmiter,
+    NumberPair,
+    PriorityQueue,
+    Range,
+    Stack,
+    Queue,
+    Vector2,
+    array,
+}
 export default{
     Container,
     DirectedGraph,
