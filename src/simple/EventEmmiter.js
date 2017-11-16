@@ -11,7 +11,7 @@ EventEmmiter.prototype._ensureKeyExist=function(key){
 EventEmmiter.prototype.emit=function(key,event){
     if(!this._keyExist(key))
         return
-    for(let[listener,doc]of this._listeners[key].entries()){
+    for(let[listener,doc]of[...this._listeners[key].entries()]){
         if(doc.once)
             this.off(key,listener)
         listener(event)
