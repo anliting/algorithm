@@ -402,6 +402,13 @@ dom.head=function(){
 dom.body=function(){
     return dom(document.body,...arguments)
 };
+var dom$1 = Object.assign(new Proxy(dom,{
+    get(t,p){
+        return p in dom||p=='then'?dom[p]:function(){
+            return dom(p,...arguments)
+        }
+    }
+}));
 
 var path = {
     normalize(s){
@@ -453,10 +460,10 @@ var simple = {
     Queue,
     Vector2,
     array,
-    dom,
+    dom: dom$1,
     path,
     uri,
 };
 
-export { Container, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom, path, uri };
+export { Container, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, path, uri };
 export default simple;
