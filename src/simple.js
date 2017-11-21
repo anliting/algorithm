@@ -9,6 +9,9 @@ import Range from './simple/Range.js'
 import Stack from './simple/Stack.js'
 import Vector2 from './simple/Vector2.js'
 import array from './simple/array.js'
+import dom from './simple/dom.js'
+import path from './simple/path.mjs'
+import uri from './simple/uri.js'
 export{
     Container,
     DirectedGraph,
@@ -20,6 +23,9 @@ export{
     Queue,
     Vector2,
     array,
+    dom,
+    path,
+    uri,
 }
 export default{
     Container,
@@ -32,4 +38,7 @@ export default{
     Queue,
     Vector2,
     array,
+    dom,
+    path,
+    uri,
 }
