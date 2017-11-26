@@ -410,6 +410,27 @@ var dom$1 = Object.assign(new Proxy(dom,{
     }
 }));
 
+function arrayLowerBound(a,v,lt){
+    return integerBinarySearch(i=>!lt(a[i],v),0,a.length)
+}
+function arrayUpperBound(a,v,lt){
+    return integerBinarySearch(i=>lt(v,a[i]),0,a.length)
+}
+function integerBinarySearch(func,f,l){
+    while(f-l){
+        let m=~~((f+l)/2);
+        if(func(m))
+            l=m;
+        else
+            f=m+1;
+    }
+    return f
+}
+var integerBinarySearch$1 = Object.assign(
+    integerBinarySearch,
+    {arrayLowerBound,arrayUpperBound}
+);
+
 var path = {
     normalize(s){
         let res;
@@ -461,9 +482,10 @@ var simple = {
     Vector2,
     array,
     dom: dom$1,
+    integerBinarySearch: integerBinarySearch$1,
     path,
     uri,
 };
 
-export { Container, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, path, uri };
+export { Container, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
 export default simple;

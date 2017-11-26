@@ -10,6 +10,7 @@ import Stack from './simple/Stack.js'
 import Vector2 from './simple/Vector2.js'
 import array from './simple/array.js'
 import dom from './simple/dom.js'
+import integerBinarySearch from './simple/integerBinarySearch.js'
 import path from './simple/path.mjs'
 import uri from './simple/uri.js'
 export{
@@ -24,6 +25,7 @@ export{
     Vector2,
     array,
     dom,
+    integerBinarySearch,
     path,
     uri,
 }
@@ -39,6 +41,7 @@ export default{
     Vector2,
     array,
     dom,
+    integerBinarySearch,
     path,
     uri,
 }
