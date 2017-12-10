@@ -1,5 +1,6 @@
 import CompoundArrayContainer from './simple/CompoundArrayContainer.js'
 import Container from './simple/Container.js'
+import DecalarativeSet from './simple/DecalarativeSet.js'
 import DirectedGraph from './simple/DirectedGraph.js'
 import EventEmmiter from './simple/EventEmmiter.js'
 import NumberPair from './simple/NumberPair.js'
@@ -15,6 +16,7 @@ import path from './simple/path.mjs'
 import uri from './simple/uri.js'
 export{
     Container,
+    DecalarativeSet,
     DirectedGraph,
     EventEmmiter,
     NumberPair,
@@ -31,6 +33,7 @@ export{
 }
 export default{
     Container,
+    DecalarativeSet,
     DirectedGraph,
     EventEmmiter,
     NumberPair,

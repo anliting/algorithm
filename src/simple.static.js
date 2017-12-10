@@ -24,6 +24,27 @@ Object.defineProperty(CompoundArrayContainer.prototype,'size',{get(){
     return this._a.length
 }});
 
+function DecalarativeSet(){
+    this._set=new Set;
+}
+DecalarativeSet.prototype.in=function(doc){
+    this._set.add(doc);
+    if(this._forEach)
+        this._forEach.in(doc);
+};
+DecalarativeSet.prototype.out=function(doc){
+    this._set.delete(doc);
+    if(this._forEach)
+        this._forEach.out(doc);
+};
+Object.defineProperty(DecalarativeSet.prototype,'forEach',{set(doc){
+    if(this._forEach)
+        this._set.forEach(this._forEach.out);
+    this._forEach=doc;
+    if(this._forEach)
+        this._set.forEach(this._forEach.in);
+}});
+
 function VertexEdgeArray(){
     this._vertices=[];
     this._edges=[];
@@ -472,6 +493,7 @@ uri.matchAbsoluteUri=function(s){
 
 var simple = {
     Container,
+    DecalarativeSet,
     DirectedGraph,
     EventEmmiter,
     NumberPair,
@@ -487,5 +509,5 @@ var simple = {
     uri,
 };
 
-export { Container, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
+export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
 export default simple;
