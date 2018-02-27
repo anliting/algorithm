@@ -368,7 +368,7 @@ function difference(a){
 var array = {
     difference,
     prefixSum,
-};
+}
 
 function dom(n){
     if(typeof n=='string')
@@ -423,13 +423,11 @@ dom.head=function(){
 dom.body=function(){
     return dom(document.body,...arguments)
 };
-var dom$1 = Object.assign(new Proxy(dom,{
-    get(t,p){
-        return p in dom||p=='then'?dom[p]:function(){
-            return dom(p,...arguments)
-        }
+var dom$1 = new Proxy(dom,{
+    get:(t,p)=>p in dom||p=='then'?dom[p]:function(){
+        return dom(p,...arguments)
     }
-}));
+})
 
 function arrayLowerBound(a,v,lt){
     return integerBinarySearch(i=>!lt(a[i],v),0,a.length)
@@ -450,7 +448,7 @@ function integerBinarySearch(func,f,l){
 var integerBinarySearch$1 = Object.assign(
     integerBinarySearch,
     {arrayLowerBound,arrayUpperBound}
-);
+)
 
 var path = {
     normalize(s){
@@ -483,7 +481,7 @@ var path = {
         }
         return res
     },
-};
+}
 
 let uri={};
 uri.matchAbsoluteUri=function(s){
@@ -507,7 +505,7 @@ var simple = {
     integerBinarySearch: integerBinarySearch$1,
     path,
     uri,
-};
+}
 
 export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
 export default simple;

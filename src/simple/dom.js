@@ -51,10 +51,8 @@ dom.head=function(){
 dom.body=function(){
     return dom(document.body,...arguments)
 }
-export default Object.assign(new Proxy(dom,{
-    get(t,p){
-        return p in dom||p=='then'?dom[p]:function(){
-            return dom(p,...arguments)
-        }
+export default new Proxy(dom,{
+    get:(t,p)=>p in dom||p=='then'?dom[p]:function(){
+        return dom(p,...arguments)
     }
-}))
+})
