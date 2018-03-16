@@ -147,6 +147,23 @@ EventEmmiter.prototype.once=function(key,listener){
     this._listeners[key].set(listener,{once:true});
 };
 
+function IntegerBinarySearch(head,tail){
+    this._head=head;
+    this._tail=tail;
+}
+Object.defineProperty(IntegerBinarySearch.prototype,'ask',{get(){
+    return this._head!=this._tail
+}});
+Object.defineProperty(IntegerBinarySearch.prototype,'in',{set(val){
+    if(val)
+        this._tail=this.out;
+    else
+        this._head=this.out+1;
+}});
+Object.defineProperty(IntegerBinarySearch.prototype,'out',{get(){
+    return~~((this._head+this._tail)/2)
+}});
+
 /*
 我在這裡設計過多型，但是比沒多型的版本慢四倍；這樣的效率在現在（2017-06-06）的處境下這是沒辦法接受的，只好寫成 add-addN 這個模樣。
 These names (add, sub, mul, div) come from x86 instructions.
@@ -494,6 +511,7 @@ var simple = {
     DecalarativeSet,
     DirectedGraph,
     EventEmmiter,
+    IntegerBinarySearch,
     NumberPair,
     PriorityQueue,
     Range,
@@ -507,5 +525,5 @@ var simple = {
     uri,
 }
 
-export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
 export default simple;
+export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };

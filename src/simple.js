@@ -3,6 +3,7 @@ import Container from './simple/Container.js'
 import DecalarativeSet from './simple/DecalarativeSet.js'
 import DirectedGraph from './simple/DirectedGraph.js'
 import EventEmmiter from './simple/EventEmmiter.js'
+import IntegerBinarySearch from './simple/IntegerBinarySearch.js'
 import NumberPair from './simple/NumberPair.js'
 import PriorityQueue from './simple/PriorityQueue.js'
 import Queue from './simple/Queue.js'
@@ -19,6 +20,7 @@ export{
     DecalarativeSet,
     DirectedGraph,
     EventEmmiter,
+    IntegerBinarySearch,
     NumberPair,
     PriorityQueue,
     Range,
@@ -36,6 +38,7 @@ export default{
     DecalarativeSet,
     DirectedGraph,
     EventEmmiter,
+    IntegerBinarySearch,
     NumberPair,
     PriorityQueue,
     Range,

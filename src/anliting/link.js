@@ -14,4 +14,3 @@ async function link(input,file){
     })
 }
 link(`simple.js`,`simple.static.js`)
-
