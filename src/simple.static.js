@@ -164,6 +164,41 @@ Object.defineProperty(IntegerBinarySearch.prototype,'out',{get(){
     return~~((this._head+this._tail)/2)
 }});
 
+function List(){
+    this.length=0;
+    this._head={};
+    this._tail={};
+    this._head.next=this._tail;
+    this._tail.previous=this._head;
+}
+List.prototype.append=function(key){
+    return this.insert(this.tail,key)
+};
+Object.defineProperty(List.prototype,'head',{get(){
+    return this._head.next
+}});
+List.prototype.insert=function(n,key){
+    this.length++;
+    return n.previous=n.previous.next={
+        previous:n.previous,
+        next:n,
+        key,
+    }
+};
+List.prototype.out=function(n){
+    this.length--;
+    n.previous.next=n.next;
+    n.next.previous=n.previous;
+    return n.next
+};
+Object.defineProperty(List.prototype,'tail',{get(){
+    return this._tail
+}});
+List.prototype[Symbol.iterator]=function*(){
+    for(let n=this.head;n.next;n=n.next)
+        yield n.key;
+};
+
 /*
 我在這裡設計過多型，但是比沒多型的版本慢四倍；這樣的效率在現在（2017-06-06）的處境下這是沒辦法接受的，只好寫成 add-addN 這個模樣。
 These names (add, sub, mul, div) come from x86 instructions.
@@ -512,6 +547,7 @@ var simple = {
     DirectedGraph,
     EventEmmiter,
     IntegerBinarySearch,
+    List,
     NumberPair,
     PriorityQueue,
     Range,
@@ -526,4 +562,4 @@ var simple = {
 }
 
 export default simple;
-export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
+export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, List, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
