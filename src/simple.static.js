@@ -452,11 +452,11 @@ let methods={
         return doe(document.body,...arguments)
     },
 };
-new Proxy(doe,{
+var doe$1 = new Proxy(doe,{
     get:(t,p)=>methods[p]||function(){
         return doe(document.createElement(p),...arguments)
     }
-});
+})
 
 function dom(n){
     if(typeof n=='string')
@@ -591,6 +591,7 @@ var simple = {
     Queue,
     Vector2,
     array,
+    doe: doe$1,
     dom: dom$1,
     integerBinarySearch: integerBinarySearch$1,
     path,
@@ -598,4 +599,4 @@ var simple = {
 }
 
 export default simple;
-export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, List, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
+export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, List, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, doe$1 as doe, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
