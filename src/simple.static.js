@@ -161,7 +161,7 @@ Object.defineProperty(IntegerBinarySearch.prototype,'in',{set(val){
         this._head=this.out+1;
 }});
 Object.defineProperty(IntegerBinarySearch.prototype,'out',{get(){
-    return~~((this._head+this._tail)/2)
+    return ~~((this._head+this._tail)/2)
 }});
 
 function List(){
@@ -420,25 +420,43 @@ function difference(a){
 var array = {
     difference,
     prefixSum,
-}
+};
 
 function doe(n){
-    let p={
-        function:f=>f(n),
-        object,
-        string,
-    };
-    for(let a of[...arguments].slice(1))
-        p[typeof a](a);
+    let
+        state=0,
+        p={
+            function:f=>f(n),
+            number,
+            object,
+            string,
+        };
+    transform([...arguments].slice(1));
     return n
+    function number(n){
+        state=n;
+    }
     function object(o){
-        if(o instanceof Node)
-            n.appendChild(o);
+        if(o instanceof Array)
+            array();
+        else if(o instanceof Node)
+            n[state?'removeChild':'appendChild'](o);
+        else if(('length' in o)||o[Symbol.iterator]){
+            o=Array.from(o);
+            array();
+        }else if(state)
+            Object.entries(o).map(([a,b])=>n.setAttribute(a,b));
         else
             Object.assign(n,o);
+        function array(){
+            o.map(transform);
+        }
     }
     function string(s){
         n.appendChild(document.createTextNode(s));
+    }
+    function transform(t){
+        for(let q;q=p[typeof t];t=q(t));
     }
 }
 let methods={
@@ -456,7 +474,7 @@ var doe$1 = new Proxy(doe,{
     get:(t,p)=>methods[p]||function(){
         return doe(document.createElement(p),...arguments)
     }
-})
+});
 
 function dom(n){
     if(typeof n=='string')
@@ -515,7 +533,7 @@ var dom$1 = new Proxy(dom,{
     get:(t,p)=>p in dom||p=='then'?dom[p]:function(){
         return dom(p,...arguments)
     }
-})
+});
 
 function arrayLowerBound(a,v,lt){
     return integerBinarySearch(i=>!lt(a[i],v),0,a.length)
@@ -536,7 +554,7 @@ function integerBinarySearch(func,f,l){
 var integerBinarySearch$1 = Object.assign(
     integerBinarySearch,
     {arrayLowerBound,arrayUpperBound}
-)
+);
 
 var path = {
     normalize(s){
@@ -569,7 +587,7 @@ var path = {
         }
         return res
     },
-}
+};
 
 let uri={};
 uri.matchAbsoluteUri=function(s){
@@ -596,7 +614,7 @@ var simple = {
     integerBinarySearch: integerBinarySearch$1,
     path,
     uri,
-}
+};
 
 export default simple;
 export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, List, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, doe$1 as doe, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
