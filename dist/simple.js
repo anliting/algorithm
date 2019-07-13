@@ -617,4 +617,4 @@ var simple = {
 };
 
 export default simple;
-export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, List, NumberPair, PriorityQueue, Range, Stack, Queue, Vector2, array, doe$1 as doe, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };
+export { Container, DecalarativeSet, DirectedGraph, EventEmmiter, IntegerBinarySearch, List, NumberPair, PriorityQueue, Queue, Range, Stack, Vector2, array, doe$1 as doe, dom$1 as dom, integerBinarySearch$1 as integerBinarySearch, path, uri };

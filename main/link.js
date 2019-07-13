@@ -13,4 +13,4 @@ async function link(input,file){
         paths:s=>skip.includes(s)&&s,
     })
 }
-link(`simple.js`,`simple.static.js`)
+link(`main/simple.js`,`dist/simple.js`)
